@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Automation Hub - Universal Demo | AIssistVA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Demo Banner -->
+    <div class="demo-banner">
+        <i class="fas fa-info-circle"></i>
+        This is a demo - contact us for your custom version
+        <a href="mailto:aissistva@gmail.com" class="demo-cta">Get Custom Version</a>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                <span>AIssistVA</span>
+            </div>
+            <div class="tagline">AI Operations Architect - Saving businesses 15+ hours weekly</div>
+            <div class="header-cta">
+                <a href="mailto:aissistva@gmail.com" class="btn btn-primary">
+                    <i class="fas fa-calendar-check"></i>
+                    Book a Consultation
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="#email-hub" class="nav-link active" data-section="email-hub">
+                    <i class="fas fa-envelope"></i> Email Hub
+                </a></li>
+                <li><a href="#scheduling" class="nav-link" data-section="scheduling">
+                    <i class="fas fa-calendar-alt"></i> Scheduling
+                </a></li>
+                <li><a href="#task-manager" class="nav-link" data-section="task-manager">
+                    <i class="fas fa-tasks"></i> Task Manager
+                </a></li>
+                <li><a href="#crm" class="nav-link" data-section="crm">
+                    <i class="fas fa-users"></i> CRM
+                </a></li>
+                <li><a href="#reports" class="nav-link" data-section="reports">
+                    <i class="fas fa-chart-bar"></i> Reports
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Email Management Hub -->
+        <section id="email-hub" class="section active">
+            <div class="section-header">
+                <h1><i class="fas fa-envelope"></i> Email Management Hub</h1>
+                <p>Streamline your email communication with templates, automation, and scheduling</p>
+                <a href="mailto:aissistva@gmail.com" class="btn btn-secondary">Book a free consultation to get your custom version</a>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Email Templates -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-file-alt"></i> Email Templates</h3>
+                        <button class="btn btn-sm" onclick="showModal('template-modal')">
+                            <i class="fas fa-plus"></i> Add Template
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div class="template-categories">
+                            <div class="category-tabs">
+                                <button class="category-tab active" data-category="all">All (10)</button>
+                                <button class="category-tab" data-category="follow-up">Follow-ups (3)</button>
+                                <button class="category-tab" data-category="proposal">Proposals (2)</button>
+                                <button class="category-tab" data-category="thank-you">Thank Yous (2)</button>
+                                <button class="category-tab" data-category="meeting">Meetings (3)</button>
+                            </div>
+                        </div>
+                        <div class="template-list" id="template-list">
+                            <!-- Templates will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Management -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-address-book"></i> Contact Management</h3>
+                        <button class="btn btn-sm" onclick="showModal('contact-modal')">
+                            <i class="fas fa-plus"></i> Add Contact
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div class="contact-filters">
+                            <select id="contact-category-filter">
+                                <option value="all">All Categories</option>
+                                <option value="leads">Leads</option>
+                                <option value="clients">Clients</option>
+                                <option value="vendors">Vendors</option>
+                                <option value="partners">Partners</option>
+                            </select>
+                            <input type="text" id="contact-search" placeholder="Search contacts...">
+                        </div>
+                        <div class="contact-list" id="contact-list">
+                            <!-- Contacts will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Email Scheduling -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-clock"></i> Scheduled Emails</h3>
+                        <button class="btn btn-sm" onclick="showModal('schedule-modal')">
+                            <i class="fas fa-plus"></i> Schedule Email
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div class="scheduled-emails" id="scheduled-emails">
+                            <!-- Scheduled emails will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auto-Response Setup -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-reply-all"></i> Auto-Response Setup</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="auto-response-list">
+                            <div class="auto-response-item">
+                                <div class="response-header">
+                                    <h4>Out of Office</h4>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <p>Automated response when you're unavailable</p>
+                            </div>
+                            <div class="auto-response-item">
+                                <div class="response-header">
+                                    <h4>Lead Follow-up</h4>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <p>Immediate response to new lead inquiries</p>
+                            </div>
+                            <div class="auto-response-item">
+                                <div class="response-header">
+                                    <h4>Meeting Confirmation</h4>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <p>Auto-confirm scheduled meetings</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scheduling Center -->
+        <section id="scheduling" class="section">
+            <div class="section-header">
+                <h1><i class="fas fa-calendar-alt"></i> Scheduling Center</h1>
+                <p>Manage appointments, bookings, and automated reminders</p>
+                <a href="mailto:aissistva@gmail.com" class="btn btn-secondary">Book a free consultation to get your custom version</a>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Calendar Booking -->
+                <div class="card full-width">
+                    <div class="card-header">
+                        <h3><i class="fas fa-calendar-plus"></i> Calendar Booking</h3>
+                        <button class="btn btn-sm" onclick="showModal('appointment-modal')">
+                            <i class="fas fa-plus"></i> Book Appointment
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div class="calendar-container">
+                            <div class="calendar-header">
+                                <button class="btn btn-sm" onclick="previousMonth()">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <h4 id="current-month">December 2024</h4>
+                                <button class="btn btn-sm" onclick="nextMonth()">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                            <div class="calendar-grid" id="calendar-grid">
+                                <!-- Calendar will be generated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Appointments -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-clock"></i> Upcoming Appointments</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="appointment-list" id="appointment-list">
+                            <!-- Appointments will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meeting Types -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-tags"></i> Meeting Types</h3>
+                        <button class="btn btn-sm" onclick="showModal('meeting-type-modal')">
+                            <i class="fas fa-plus"></i> Add Type
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div class="meeting-types" id="meeting-types">
+                            <!-- Meeting types will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reminder Settings -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-bell"></i> Reminder Settings</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="reminder-sequences">
+                            <div class="reminder-item">
+                                <h4>Strategy Consultation</h4>
+                                <div class="reminder-steps">
+                                    <span class="step">24h before - Email</span>
+                                    <span class="step">2h before - SMS</span>
+                                    <span class="step">15min before - Email</span>
+                                </div>
+                            </div>
+                            <div class="reminder-item">
+                                <h4>Project Kickoff</h4>
+                                <div class="reminder-steps">
+                                    <span class="step">1 day before - Email</span>
+                                    <span class="step">1h before - SMS</span>
+                                </div>
+                            </div>
+                            <div class="reminder-item">
+                                <h4>Status Review</h4>
+                                <div class="reminder-steps">
+                                    <span class="step">2h before - Email</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Task & Project Manager -->
+        <section id="task-manager" class="section">
+            <div class="section-header">
+                <h1><i class="fas fa-tasks"></i> Task & Project Manager</h1>
+                <p>Organize tasks, track projects, and automate status updates</p>
+                <a href="mailto:aissistva@gmail.com" class="btn btn-secondary">Book a free consultation to get your custom version</a>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Task Creation -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-plus-circle"></i> Create Task</h3>
+                    </div>
+                    <div class="card-content">
+                        <form id="task-form" class="task-form">
+                            <div class="form-group">
+                                <label>Task Title</label>
+                                <input type="text" id="task-title" placeholder="Enter task title" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea id="task-description" placeholder="Task description"></textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Priority</label>
+                                    <select id="task-priority">
+                                        <option value="low">Low</option>
+                                        <option value="medium" selected>Medium</option>
+                                        <option value="high">High</option>
+                                        <option value="urgent">Urgent</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Due Date</label>
+                                    <input type="date" id="task-due-date">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Project</label>
+                                <select id="task-project">
+                                    <option value="">No Project</option>
+                                    <option value="website-redesign">Website Redesign</option>
+                                    <option value="marketing-campaign">Marketing Campaign</option>
+                                    <option value="client-onboarding">Client Onboarding</option>
+                                    <option value="q4-planning">Q4 Planning</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Create Task</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Active Tasks -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-list-check"></i> Active Tasks</h3>
+                        <div class="task-filters">
+                            <select id="task-priority-filter">
+                                <option value="all">All Priorities</option>
+                                <option value="urgent">Urgent</option>
+                                <option value="high">High</option>
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="task-list" id="active-tasks">
+                            <!-- Active tasks will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Pipeline -->
+                <div class="card full-width">
+                    <div class="card-header">
+                        <h3><i class="fas fa-project-diagram"></i> Project Pipeline</h3>
+                        <button class="btn btn-sm" onclick="showModal('project-modal')">
+                            <i class="fas fa-plus"></i> Add Project
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div class="project-pipeline" id="project-pipeline">
+                            <!-- Projects will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Completed Tasks -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-check-circle"></i> Recently Completed</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="completed-tasks" id="completed-tasks">
+                            <!-- Completed tasks will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CRM & Lead Tracker -->
+        <section id="crm" class="section">
+            <div class="section-header">
+                <h1><i class="fas fa-users"></i> CRM & Lead Tracker</h1>
+                <p>Track leads, manage sales pipeline, and automate follow-ups</p>
+                <a href="mailto:aissistva@gmail.com" class="btn btn-secondary">Book a free consultation to get your custom version</a>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Lead Capture -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-user-plus"></i> Capture New Lead</h3>
+                    </div>
+                    <div class="card-content">
+                        <form id="lead-form" class="lead-form">
+                            <div class="form-group">
+                                <label>Company Name</label>
+                                <input type="text" id="lead-company" placeholder="Enter company name" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" id="lead-first-name" placeholder="First name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" id="lead-last-name" placeholder="Last name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="lead-email" placeholder="Email address" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="tel" id="lead-phone" placeholder="Phone number">
+                            </div>
+                            <div class="form-group">
+                                <label>Source</label>
+                                <select id="lead-source">
+                                    <option value="website">Website</option>
+                                    <option value="referral">Referral</option>
+                                    <option value="social-media">Social Media</option>
+                                    <option value="cold-outreach">Cold Outreach</option>
+                                    <option value="event">Event</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Notes</label>
+                                <textarea id="lead-notes" placeholder="Additional notes"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add Lead</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Sales Pipeline -->
+                <div class="card full-width">
+                    <div class="card-header">
+                        <h3><i class="fas fa-funnel-dollar"></i> Sales Pipeline</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="pipeline-container">
+                            <div class="pipeline-stage" data-stage="prospect">
+                                <h4>Prospect (8)</h4>
+                                <div class="pipeline-leads" id="prospect-leads">
+                                    <!-- Prospect leads -->
+                                </div>
+                            </div>
+                            <div class="pipeline-stage" data-stage="qualified">
+                                <h4>Qualified (6)</h4>
+                                <div class="pipeline-leads" id="qualified-leads">
+                                    <!-- Qualified leads -->
+                                </div>
+                            </div>
+                            <div class="pipeline-stage" data-stage="proposal">
+                                <h4>Proposal (4)</h4>
+                                <div class="pipeline-leads" id="proposal-leads">
+                                    <!-- Proposal leads -->
+                                </div>
+                            </div>
+                            <div class="pipeline-stage" data-stage="negotiation">
+                                <h4>Negotiation (2)</h4>
+                                <div class="pipeline-leads" id="negotiation-leads">
+                                    <!-- Negotiation leads -->
+                                </div>
+                            </div>
+                            <div class="pipeline-stage" data-stage="closed">
+                                <h4>Closed (3)</h4>
+                                <div class="pipeline-leads" id="closed-leads">
+                                    <!-- Closed leads -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Follow-up Sequences -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-route"></i> Follow-up Sequences</h3>
+                        <button class="btn btn-sm" onclick="showModal('sequence-modal')">
+                            <i class="fas fa-plus"></i> Add Sequence
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div class="sequence-list" id="sequence-list">
+                            <!-- Follow-up sequences will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lead Analytics -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Lead Analytics</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="analytics-grid">
+                            <div class="analytics-item">
+                                <div class="analytics-number">23</div>
+                                <div class="analytics-label">Total Leads</div>
+                            </div>
+                            <div class="analytics-item">
+                                <div class="analytics-number">8</div>
+                                <div class="analytics-label">New This Month</div>
+                            </div>
+                            <div class="analytics-item">
+                                <div class="analytics-number">34.8%</div>
+                                <div class="analytics-label">Conversion Rate</div>
+                            </div>
+                            <div class="analytics-item">
+                                <div class="analytics-number">$45K</div>
+                                <div class="analytics-label">Pipeline Value</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reports Dashboard -->
+        <section id="reports" class="section">
+            <div class="section-header">
+                <h1><i class="fas fa-chart-bar"></i> Reports Dashboard</h1>
+                <p>Track performance, analyze data, and optimize your business processes</p>
+                <a href="mailto:aissistva@gmail.com" class="btn btn-secondary">Book a free consultation to get your custom version</a>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Activity Summary -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-pie"></i> Activity Summary</h3>
+                        <select id="time-period">
+                            <option value="week">This Week</option>
+                            <option value="month" selected>This Month</option>
+                            <option value="quarter">This Quarter</option>
+                        </select>
+                    </div>
+                    <div class="card-content">
+                        <div class="activity-summary">
+                            <div class="activity-item">
+                                <div class="activity-icon email">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <div class="activity-number">156</div>
+                                    <div class="activity-label">Emails Sent</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon meetings">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <div class="activity-number">23</div>
+                                    <div class="activity-label">Meetings Held</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon tasks">
+                                    <i class="fas fa-tasks"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <div class="activity-number">89</div>
+                                    <div class="activity-label">Tasks Completed</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon leads">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <div class="activity-number">12</div>
+                                    <div class="activity-label">New Leads</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Email Performance -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-envelope-open"></i> Email Performance</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="email-metrics">
+                            <div class="metric-item">
+                                <div class="metric-label">Open Rate</div>
+                                <div class="metric-value">68.5%</div>
+                                <div class="metric-change positive">+5.2%</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">Response Rate</div>
+                                <div class="metric-value">23.1%</div>
+                                <div class="metric-change positive">+2.8%</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">Click Rate</div>
+                                <div class="metric-value">12.4%</div>
+                                <div class="metric-change negative">-1.1%</div>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="email-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Appointment Analytics -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-calendar-times"></i> Appointment Analytics</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="appointment-metrics">
+                            <div class="metric-item">
+                                <div class="metric-label">Bookings</div>
+                                <div class="metric-value">45</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">No-Shows</div>
+                                <div class="metric-value">3</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">Completion Rate</div>
+                                <div class="metric-value">93.3%</div>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="appointment-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lead Conversion Funnel -->
+                <div class="card full-width">
+                    <div class="card-header">
+                        <h3><i class="fas fa-funnel-dollar"></i> Lead Conversion Funnel</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="funnel-container">
+                            <div class="funnel-stage">
+                                <div class="funnel-label">Website Visitors</div>
+                                <div class="funnel-bar">
+                                    <div class="funnel-fill" style="width: 100%"></div>
+                                </div>
+                                <div class="funnel-number">1,250</div>
+                            </div>
+                            <div class="funnel-stage">
+                                <div class="funnel-label">Lead Form Submissions</div>
+                                <div class="funnel-bar">
+                                    <div class="funnel-fill" style="width: 8%"></div>
+                                </div>
+                                <div class="funnel-number">100</div>
+                            </div>
+                            <div class="funnel-stage">
+                                <div class="funnel-label">Qualified Leads</div>
+                                <div class="funnel-bar">
+                                    <div class="funnel-fill" style="width: 6%"></div>
+                                </div>
+                                <div class="funnel-number">75</div>
+                            </div>
+                            <div class="funnel-stage">
+                                <div class="funnel-label">Proposals Sent</div>
+                                <div class="funnel-bar">
+                                    <div class="funnel-fill" style="width: 4%"></div>
+                                </div>
+                                <div class="funnel-number">50</div>
+                            </div>
+                            <div class="funnel-stage">
+                                <div class="funnel-label">Closed Deals</div>
+                                <div class="funnel-bar">
+                                    <div class="funnel-fill" style="width: 2.4%"></div>
+                                </div>
+                                <div class="funnel-number">30</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task Completion Stats -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-check-double"></i> Task Completion</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="task-stats">
+                            <div class="stat-item">
+                                <div class="stat-label">On Time</div>
+                                <div class="stat-value">85%</div>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Late</div>
+                                <div class="stat-value">12%</div>
+                                <div class="stat-bar">
+                                    <div class="stat-fill late" style="width: 12%"></div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Overdue</div>
+                                <div class="stat-value">3%</div>
+                                <div class="stat-bar">
+                                    <div class="stat-fill overdue" style="width: 3%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Sidebar CTA -->
+    <div class="sidebar-cta">
+        <div class="cta-content">
+            <h4>This demo shows basic features</h4>
+            <p>Your custom system includes advanced automation, integrations, and personalized workflows.</p>
+            <a href="mailto:aissistva@gmail.com" class="btn btn-primary">Get Your Custom Version</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <span>AIssistVA</span>
+                </div>
+                <p>AI Operations Architect - Saving businesses 15+ hours weekly</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> aissistva@gmail.com</p>
+                    <p><i class="fas fa-globe"></i> AIssistVA.carrd.co</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li>Email Automation</li>
+                        <li>Scheduling Systems</li>
+                        <li>Task Management</li>
+                        <li>CRM Solutions</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-cta">
+                <h4>Ready to automate your business?</h4>
+                <p>Get started today with a custom solution designed for your needs.</p>
+                <a href="mailto:aissistva@gmail.com" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    Book Your Consultation
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AIssistVA. Built by AIssistVA - AI Operations Architect.</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="template-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Email Template</h3>
+                <button class="modal-close" onclick="closeModal('template-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="template-form">
+                    <div class="form-group">
+                        <label>Template Name</label>
+                        <input type="text" id="template-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="template-category" required>
+                            <option value="follow-up">Follow-up</option>
+                            <option value="proposal">Proposal</option>
+                            <option value="thank-you">Thank You</option>
+                            <option value="meeting">Meeting</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Subject Line</label>
+                        <input type="text" id="template-subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <textarea id="template-content" rows="8" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('template-modal')">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Template</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Other modals will be added here -->
+    <div id="contact-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Contact</h3>
+                <button class="modal-close" onclick="closeModal('contact-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="contact-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="contact-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Company</label>
+                        <input type="text" id="contact-company">
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="contact-category" required>
+                            <option value="leads">Leads</option>
+                            <option value="clients">Clients</option>
+                            <option value="vendors">Vendors</option>
+                            <option value="partners">Partners</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('contact-modal')">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Contact</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
